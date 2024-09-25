@@ -27,7 +27,8 @@ func (c *CLI) Run() error {
 	return function.Serve(&Function{log: log},
 		function.Listen(c.Network, c.Address),
 		function.MTLSCertificates(c.TLSCertsDir),
-		function.Insecure(c.Insecure))
+		function.Insecure(c.Insecure),
+		function.MaxRecvMessageSize(1024*1024*10))
 }
 
 func main() {
